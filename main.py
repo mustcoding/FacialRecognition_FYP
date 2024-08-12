@@ -38,7 +38,7 @@ def is_within_active_time():
     now = datetime.now()
     current_time = now.strftime("%H:%M")
     current_day = now.weekday()  # Monday is 0 and Sunday is 6
-    return (current_time >= "07:30" and current_time <= "23:59" and current_day in range(5))  # Monday to Friday
+    return (current_time >= "07:30" and current_time <= "15:00" and current_day in range(5))  # Monday to Friday
 
 while True:
     if is_within_active_time():
