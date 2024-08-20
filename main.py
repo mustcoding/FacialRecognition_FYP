@@ -38,7 +38,7 @@ def is_within_active_time():
     now = datetime.now()
     current_time = now.strftime("%H:%M")
     current_day = now.weekday()  # Monday is 0 and Sunday is 6
-    return (current_time >= "07:30" and current_time <= "15:00" and current_day in range(5))  # Monday to Friday
+    return (current_time >= "07:30" and current_time <= "17:30" and current_day in range(5))  # Monday to Friday
 
 while True:
     if is_within_active_time():
@@ -91,7 +91,7 @@ while True:
                         attendance_status = "Processing..."
 
                         # Send the name to the API
-                        findStudentURL = "http://192.168.0.123:8000/findStudents"
+                        findStudentURL = "http://192.168.0.119:8000/findStudents"
                         data = {"name": name}
                         try:
                             response = requests.post(findStudentURL, json=data)
@@ -102,7 +102,7 @@ while True:
                                     student_study_session_id = response_json[0]["student_study_session_id"]
                                     print(f"Student Study Session ID: {student_study_session_id}")
                                     
-                                    recordAttendanceURL = "http://192.168.0.123:8000/recordAttendance"
+                                    recordAttendanceURL = "http://192.168.0.119:8000/recordAttendance"
                                     
                                     sendData = {
                                         "date_time_in": current_time,
